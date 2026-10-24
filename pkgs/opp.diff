@@ -1,0 +1,11 @@
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts
+@@ -309,7 +309,7 @@
+ };
+ 
+ &cpu7_opp_table {
+-	cpu7_opp21: opp-3187200000 {
++	cpu7_opp21_pipa: opp-3187200000 {
+ 		opp-hz = /bits/ 64 <3187200000>;
+ 		opp-peak-kBps = <8368000 51609600>;
+ 	};
