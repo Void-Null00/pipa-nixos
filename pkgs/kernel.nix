@@ -9,7 +9,8 @@
   patchedSrc = runCommand "linux-src-pipa" {} ''
     cp -a ${rawSrc} $out
     chmod -R +w $out
-
+    patch -p1 $out < nanosic_803.diff
+    patch -p1 $out < opp.diff
     cp ${./pipa.config} $out/arch/arm64/configs/pipa.config
     patchShebangs $out
   '';
