@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   networking.hostName = "pipa";
   networking.networkmanager.enable = true;
 
@@ -45,16 +49,18 @@
   security.sudo.wheelNeedsPassword = false;
 
   # Touch-friendly desktop environment
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
+  services = {
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    xserver.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     git
     curl
     vim
     htop
     fastfetch
+    config.boot.kernelPackages.cpupower
   ];
 
   system.stateVersion = "26.05";
